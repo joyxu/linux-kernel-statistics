@@ -19,7 +19,7 @@ cd $SRCDIR
 #     git log --oneline v4.$(($i-1))..v4.$i | wc -l
 # done
 
-for ((i=1;i<=$KSUBVER;i++)) ; do
+for ((i=14;i<=$KSUBVER;i++)) ; do
     echo -e "v$KMAINVER.${i}\t $1 patches total:"
     git log --oneline --author=$1 v$KMAINVER.$(($i-1))..v$KMAINVER.$i | wc -l
 
@@ -36,3 +36,11 @@ for ((i=1;i<=$KSUBVER;i++)) ; do
 	    echo "$TMP  $(git log --oneline --author=$1 v$KMAINVER.$(($i-1))..v$KMAINVER.$i ./drivers/$TMP | wc -l)"
     done
 done
+
+# for ((i=14;i<=$KSUBVER;i++)) ; do
+#     echo -e "v$KMAINVER.${i}\t $1 patches drivers total:"
+#     for d in $(find $SRCDIR/drivers/ -maxdepth 1 -type d | sed -e '/.*drivers\/$/d' | sort) ; do
+# 	    TMP=$(basename $d)
+# 	    echo "$TMP  $(git log --oneline --author=$1 v$KMAINVER.$(($i-1))..v$KMAINVER.$i ./drivers/$TMP | wc -l)"
+#     done | sort -nr -k2
+# done
