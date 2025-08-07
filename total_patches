@@ -3,6 +3,8 @@
 source common.sh
 cd $SRCDIR
 
+# git log  --pretty=format:'%h , %ad , %s%d , [%an]' --perl-regexp --invert-grep  --author='(hisilicon.com|huawei.com)' > ~/xxx.csv
+#
 # for ((i=12;i<=39;i++)) ; do
 #     git log --oneline v2.6.$(($i-1))..v2.6.$i | wc -l
 # done
